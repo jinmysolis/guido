@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Message;
 use Illuminate\Http\Request;
 
-class PagesController extends Controller
+class MessagesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,22 +13,9 @@ class PagesController extends Controller
      */
     public function index()
     {
-       $messages= Message::all();
-       
-       return view('welcome',[
-           'messages'=>$messages,
-       ]);
+        //
     }
 
-    
-    public function home()
-    {
-       $messages= Message::all();
-       
-       return view('welcome',[
-           'messages'=>$messages,
-       ]);
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -56,9 +43,16 @@ class PagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Message $message)
     {
-        //
+     
+        
+       return view('message.show',[
+          'messages'=>$message,
+      ]);
+       
+     
+        
     }
 
     /**
