@@ -21,9 +21,22 @@ class MessagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $this->validate($request, [
+            'message' => 'required',
+            
+        ]);
+        
+        $message = Message::create([
+            'content'=>$request->input('message'),
+            'image'=> 'http://lorempixel.com/600/338?'. mt_rand(0, 1000)
+        ]);
+        return view('message.show',[
+          'messages'=>$message,
+      ]);
+       
+        
     }
 
     /**

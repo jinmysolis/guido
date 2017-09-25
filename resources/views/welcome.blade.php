@@ -11,6 +11,30 @@
     </nav>
     
 </div>
+
+<div class="row">
+<!--    {!!Form::open(['url'=>'message','method'=>'POST'])!!}-->
+    <form  role="form" method="POST" action="{{ url('/message/create') }}">
+        {{csrf_field()}}
+        <div class="form-group">
+            <input type="text" name="message" class="form-control" placeholder="que estas pensando">
+            
+            @if ($errors->any())
+                 @foreach($errors->get('message') as $error)
+                  <div class="alert-danger">{{$error}}</div>
+                 @endforeach
+           @endif
+        </div>
+        
+        
+  </form>
+<!--       {!!Form::close()!!} -->
+</div>
+  
+
+
+
+
 <div class="row">
     
     @forelse($messages as $message)
@@ -26,6 +50,8 @@
     @empty
     <p>No hay mensajes destacados</p>
     @endforelse
+    
+    
 </div>
 @endsection
 

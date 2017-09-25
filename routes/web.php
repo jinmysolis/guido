@@ -19,7 +19,7 @@ Route::get('/', 'PagesController@home');
 Route::resource('/message', 'MessagesController');
 //Route::get('/message', 'MessagesController@show');
 
-
+Route::post('/message/create','MessagesController@create');
 
 
 Route::get('/acerca', function () {
